@@ -1,4 +1,4 @@
-type Quiz = {
+type Question = {
     id: number;
     question: string;
     answer: string;
@@ -7,4 +7,4 @@ type Quiz = {
     wrong3: string;
 }
 
-export default Quiz;
+export default Question;
