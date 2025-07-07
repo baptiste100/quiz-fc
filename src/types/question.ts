@@ -1,4 +1,4 @@
-type Question = {
+export type Question = {
     id: number;
     question: string;
     answer: string;
@@ -7,4 +7,13 @@ type Question = {
     wrong3: string;
 }
 
-export default Question;
+export type QuestionWithShuffledAnswers = {
+    id: number
+    question: string
+    answers: ShuffledAnswer[]
+}
+
+export type ShuffledAnswer = {
+    text: string
+    isCorrect: boolean
+}

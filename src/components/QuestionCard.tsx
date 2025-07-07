@@ -1,21 +1,20 @@
 "use client"
 
-import {Quiz} from "@/types/quiz";
 import {useState} from "react";
-import Question from "@/types/question";
+import {QuestionWithShuffledAnswers} from "@/types/question";
 
-export default function QuestionCard(props: { quiz: Quiz }) {
-    const quiz = props.quiz;
-    const [question, setQuestion] = useState<Question>();
+export default function QuestionCard(props: { questions: QuestionWithShuffledAnswers[] }) {
+    const [questionNumber, setQuestionNumber] = useState<number>(0);
+    const questions = props.questions;
 
     return (
-        <div className="flex flex-col bg-neutral-900 rounded-xl p-10 gap-2">
-            <p>{quiz.name}</p>
-            {
-                quiz.questions?.map((q) => (
-                    <p key={q.id}> {q.question} </p>
-                ))
-            }
+        <div className="flex flex-col bg-neutral-900 rounded-xl p-10 gap-10">
+            <h1 className="text-xl">{questions[questionNumber].question}</h1>
+            <div className="flex flex-col gap-3">
+                { questions[questionNumber].answers.map((answer, index) => (
+                    <button key={index} className="text-lg p-3 rounded-xl bg-black cursor-pointer border border-transparent hover:border-white"> { answer.text } </button>
+                ))}
+            </div>
         </div>
     )
 }
