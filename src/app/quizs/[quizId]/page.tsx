@@ -33,8 +33,7 @@ export default async function QuizPage({ params }: { params: { quizId: string }}
     const questions= shuffleArray(quiz.questions).map(convertQuestion);
 
     return (
-        <div className="flex flex-col items-center gap-5 px-10 py-5">
-            <h1 className="text-3xl font-bold">{quiz.name}</h1>
+        <div>
             <QuestionCard questions={questions}/>
         </div>
     );
