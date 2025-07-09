@@ -7,7 +7,7 @@ export async function getAllQuizzes() {
 export async function getQuizWithTitleOnly(quizId: number) {
     return prisma.quiz.findUnique({
         where: { id: quizId },
-        select: { id: true, name: true }
+        select: { id: true, name: true, difficulty: true }
     })
 }
 
