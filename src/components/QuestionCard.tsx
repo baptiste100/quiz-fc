@@ -9,6 +9,7 @@ export default function QuestionCard(props: { questions: QuestionWithShuffledAns
     const [nbCorrectAnswers, setNbCorrectAnswers] = useState<number>(0);
     const [hasResponded, setHasResponded] = useState<boolean>(false);
     const [responseIndex, setResponseIndex] = useState<number>();
+
     const questions = props.questions;
     const pathname = usePathname();
 
