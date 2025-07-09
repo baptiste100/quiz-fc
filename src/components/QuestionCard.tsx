@@ -21,12 +21,12 @@ export default function QuestionCard(props: { questions: QuestionWithShuffledAns
     }
 
     return (
-        <div className="flex flex-col text-center rounded-2xl bg-gradient-to-br bg-stone-800 to-stone-950 text-white p-10 gap-8">
+        <div className="flex flex-col w-150 text-center rounded-lg bg-gradient-to-br bg-stone-800 to-stone-950 text-white p-10 gap-8">
             <p className="text-lg">{currentQuestionNb + 1} / {questions.length}</p>
             <h1 className="text-xl">{questions[currentQuestionNb].question}</h1>
             <div className="flex flex-col gap-3">
                 { questions[currentQuestionNb].answers.map((answer, index) => (
-                    <button key={index} onClick={() => { handlePlayerResponds(answer.isCorrect) }} className="text-lg p-3 rounded-xl bg-green-800 hover:bg-green-700 cursor-pointer border border-transparent hover:border-white"> { answer.text } </button>
+                    <button key={index} onClick={() => { handlePlayerResponds(answer.isCorrect) }} className="text-lg p-3 rounded-lg text-black bg-gray-200  hover:bg-gray-300 cursor-pointer border border-transparent hover:border-white"> { answer.text } </button>
                 ))}
             </div>
         </div>

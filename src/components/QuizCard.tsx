@@ -10,7 +10,7 @@ export default function QuizCard( props: { quiz: Quiz } ) {
     }
 
     return (
-        <div className="flex flex-col bg-gradient-to-br bg-stone-800 to-stone-950 text-white rounded-lg p-10 gap-5 shadow-lg hover:shadow-2xl transition-shadow">
+        <div className="flex flex-col justify-between w-80 bg-gradient-to-br bg-stone-800 to-stone-950 text-white rounded-lg p-10 gap-5 shadow-lg hover:shadow-2xl transition-shadow">
             <h1 className="text-2xl font-bold text-center">{quiz.name}</h1>
             <em className="text-center text-lg">Difficulté : {quiz.difficulty}</em>
             <Link
