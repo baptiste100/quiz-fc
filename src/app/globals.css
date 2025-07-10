@@ -9,7 +9,7 @@
   --color-green3: #193419;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
-  --foreground: oklch(0.147 0.004 49.25);
+  --foreground: #ededed;
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.147 0.004 49.25);
   --popover: oklch(1 0 0);
@@ -121,5 +121,8 @@
   }
   body {
     @apply bg-background text-foreground;
+    background: linear-gradient(to left, var(--color-green2), var(--color-green3), var(--color-green2));
+    color: var(--foreground);
+    font-family: Arial, Helvetica, sans-serif;
   }
 }

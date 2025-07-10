@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+import {Toaster} from "sonner";
+import {Header} from "@/components/header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,11 +28,10 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} flex flex-col items-center antialiased`}
       >
-        <div className="text-4xl gap-5 font-bold p-5 px-10">
-            <Link href="/" >QuizFC</Link>
-        </div>
+        <Header/>
+        <Toaster className="bg-black text-black"/>
         {children}
       </body>
     </html>
