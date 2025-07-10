@@ -1,7 +1,6 @@
 import {getQuizWithQuestions} from "@/lib/quiz/quiz.service";
 import QuestionCard from "@/components/QuestionCard";
 import {notFound} from "next/navigation";
-import * as querystring from "node:querystring";
 import {Question, QuestionWithShuffledAnswers, ShuffledAnswer} from "@/types/question";
 
 function shuffleArray<T>(array: T[]): T[] {
@@ -23,8 +22,9 @@ function convertQuestion(q: Question): QuestionWithShuffledAnswers {
     };
 }
 
-export default async function QuizPage({ params }: { params: { quizId: string }}) {
-    const quiz = await getQuizWithQuestions(Number(params.quizId));
+export default async function QuizPage({ params }: { params: Promise<{ quizId: string }>}) {
+    const { quizId } = await params;
+    const quiz = await getQuizWithQuestions(Number(quizId));
 
     if (!quiz || quiz.questions.length <= 0) {
         notFound();
