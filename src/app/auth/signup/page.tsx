@@ -17,6 +17,7 @@ import { Loader2, X } from "lucide-react";
 import { signUp } from "@/lib/auth/auth-client";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function SignUp() {
     const [username, setUsername] = useState("");
@@ -177,8 +178,10 @@ export default function SignUp() {
                     </Button>
                 </div>
             </CardContent>
-            <CardFooter>
-
+            <CardFooter className="flex flex-col text-center text-white">
+                <div className="flex gap-3">
+                    <p>Déja un compte ? </p>  <Link href="/auth/signin" className="text-blue-400 hover:text-blue-300">Connectez vous ici</Link>
+                </div>
             </CardFooter>
         </Card>
     );

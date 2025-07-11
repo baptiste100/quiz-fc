@@ -29,11 +29,13 @@ export default async function RootLayout({
   return (
     <html lang="fr">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} flex flex-col items-center antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} flex flex-col gap-5 items-center antialiased`}
       >
         <Header/>
         <Toaster className="bg-black text-black"/>
-        {children}
+        <div>
+          {children}
+        </div>
       </body>
     </html>
   );

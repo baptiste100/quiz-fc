@@ -21,9 +21,9 @@ export default function SignIn() {
     const router = useRouter();
 
     return (
-        <Card className="w-120 mt-[5%] bg-stone-900 border-transparent">
+        <Card className="w-120 mt-[5%] bg-stone-900 border-transparent text-white">
             <CardHeader>
-                <CardTitle className="text-lg md:text-xl text-white">Connexion</CardTitle>
+                <CardTitle className="text-lg md:text-xl ">Connexion</CardTitle>
                 <CardDescription className="text-xs md:text-sm">
                     Entrez votre email ci-dessous pour vous connecter à votre compte
                 </CardDescription>
@@ -31,7 +31,7 @@ export default function SignIn() {
             <CardContent>
                 <div className="grid gap-4">
                     <div className="grid gap-2">
-                        <Label className="text-white" htmlFor="email">Email</Label>
+                        <Label className="" htmlFor="email">Email</Label>
                         <Input
                             id="email"
                             type="email"
@@ -45,7 +45,7 @@ export default function SignIn() {
                     </div>
 
                     <div className="grid gap-2">
-                        <div className="flex items-center text-white">
+                        <div className="flex items-center ">
                             <Label htmlFor="password">Mot de passe</Label>
                             <Link
                                 href="#"
@@ -72,7 +72,7 @@ export default function SignIn() {
                                 setRememberMe(!rememberMe);
                             }}
                         />
-                        <Label className="text-white" htmlFor="remember">Se souvenir de moi</Label>
+                        <Label htmlFor="remember">Se souvenir de moi</Label>
                     </div>
 
                     <Button
@@ -120,7 +120,7 @@ export default function SignIn() {
                         <Button
                             variant="outline"
                             className={cn(
-                                "w-full gap-2 text-white cursor-pointer"
+                                "w-full gap-2  cursor-pointer"
                             )}
                             disabled={loading}
                             onClick={async () => {
@@ -151,7 +151,11 @@ export default function SignIn() {
                     </div>
                 </div>
             </CardContent>
-
+            <CardFooter className="flex flex-col text-center ">
+                <div className="flex gap-3">
+                    <p>Pas de compte ? </p>  <Link href="/auth/signup" className="text-blue-400 hover:text-blue-300">Créez un compte ici</Link>
+                </div>
+            </CardFooter>
         </Card>
     );
 }
