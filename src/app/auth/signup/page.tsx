@@ -42,19 +42,20 @@ export default function SignUp() {
     };
 
     return (
-        <Card className="flex flex-col z-50 rounded-md rounded-lg w-120">
+        <Card className="bg-stone-900 border-transparent text-white flex flex-col z-50 rounded-md rounded-lg w-120 mt-[5%]">
             <CardHeader>
-                <CardTitle className="text-lg md:text-xl">Sign Up</CardTitle>
+                <CardTitle className="text-lg md:text-xl">Créer un compte</CardTitle>
                 <CardDescription className="text-xs md:text-sm">
-                    Enter your information to create an account
+                    Entrez vos informations pour créer un compte
                 </CardDescription>
             </CardHeader>
             <CardContent>
                 <div className="grid gap-4">
                     <div className="grid gap-4">
                         <div className="grid gap-4">
-                            <Label htmlFor="first-name">Username</Label>
+                            <Label htmlFor="first-name">{"Nom d'utilisateur"}</Label>
                             <Input
+                                className="border-stone-500"
                                 id="first-name"
                                 placeholder="Max"
                                 required
@@ -68,6 +69,7 @@ export default function SignUp() {
                     <div className="grid gap-2">
                         <Label htmlFor="email">Email</Label>
                         <Input
+                            className="border-stone-500"
                             id="email"
                             type="email"
                             placeholder="m@example.com"
@@ -79,8 +81,9 @@ export default function SignUp() {
                         />
                     </div>
                     <div className="grid gap-2">
-                        <Label htmlFor="password">Password</Label>
+                        <Label htmlFor="password">Mot de passe</Label>
                         <Input
+                            className="border-stone-500"
                             id="password"
                             type="password"
                             value={password}
@@ -90,8 +93,9 @@ export default function SignUp() {
                         />
                     </div>
                     <div className="grid gap-2">
-                        <Label htmlFor="password">Confirm Password</Label>
+                        <Label htmlFor="password">Confirmer le mot de passe</Label>
                         <Input
+                            className="border-stone-500"
                             id="password_confirmation"
                             type="password"
                             value={passwordConfirmation}
@@ -100,9 +104,9 @@ export default function SignUp() {
                             placeholder="Confirm Password"
                         />
                     </div>
-                    <div className="grid gap-2">
-                        <Label htmlFor="image">Profile Image (optional)</Label>
-                        <div className="flex items-end gap-4">
+                    <div className="grid gap-2 border-stone-500">
+                        <Label htmlFor="image">Image de profil (optionnel)</Label>
+                        <div className="flex items-end gap-4 ">
                             {imagePreview && (
                                 <div className="relative w-16 h-16 rounded-sm overflow-hidden">
                                     <Image
@@ -119,7 +123,7 @@ export default function SignUp() {
                                     type="file"
                                     accept="image/*"
                                     onChange={handleImageChange}
-                                    className="w-full"
+                                    className="w-full border-stone-500"
                                 />
                                 {imagePreview && (
                                     <X
@@ -135,7 +139,7 @@ export default function SignUp() {
                     </div>
                     <Button
                         type="submit"
-                        className="w-full"
+                        className="w-full cursor-pointer bg-white hover:bg-gray-300 text-black"
                         disabled={loading}
                         onClick={async () => {
                             console.log(email);
@@ -159,6 +163,7 @@ export default function SignUp() {
                                     },
                                     onSuccess: async () => {
                                         router.push("/");
+                                        router.refresh();
                                     },
                                 },
                             });
@@ -167,7 +172,7 @@ export default function SignUp() {
                         {loading ? (
                             <Loader2 size={16} className="animate-spin" />
                         ) : (
-                            "Create an account"
+                            "Créer un compte"
                         )}
                     </Button>
                 </div>

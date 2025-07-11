@@ -21,17 +21,17 @@ export default function SignIn() {
     const router = useRouter();
 
     return (
-        <Card className="w-120">
+        <Card className="w-120 mt-[5%] bg-stone-900 border-transparent">
             <CardHeader>
-                <CardTitle className="text-lg md:text-xl">Sign In</CardTitle>
+                <CardTitle className="text-lg md:text-xl text-white">Connexion</CardTitle>
                 <CardDescription className="text-xs md:text-sm">
-                    Enter your email below to login to your account
+                    Entrez votre email ci-dessous pour vous connecter à votre compte
                 </CardDescription>
             </CardHeader>
             <CardContent>
                 <div className="grid gap-4">
                     <div className="grid gap-2">
-                        <Label htmlFor="email">Email</Label>
+                        <Label className="text-white" htmlFor="email">Email</Label>
                         <Input
                             id="email"
                             type="email"
@@ -45,13 +45,13 @@ export default function SignIn() {
                     </div>
 
                     <div className="grid gap-2">
-                        <div className="flex items-center">
-                            <Label htmlFor="password">Password</Label>
+                        <div className="flex items-center text-white">
+                            <Label htmlFor="password">Mot de passe</Label>
                             <Link
                                 href="#"
                                 className="ml-auto inline-block text-sm underline"
                             >
-                                Forgot your password?
+                                Mot de passe oublié ?
                             </Link>
                         </div>
 
@@ -72,14 +72,12 @@ export default function SignIn() {
                                 setRememberMe(!rememberMe);
                             }}
                         />
-                        <Label htmlFor="remember">Remember me</Label>
+                        <Label className="text-white" htmlFor="remember">Se souvenir de moi</Label>
                     </div>
-
-
 
                     <Button
                         type="submit"
-                        className="w-full"
+                        className="w-full cursor-pointer bg-white hover:bg-gray-300 text-black"
                         disabled={loading}
                         onClick={async () => {
                            const { error } = await signIn.email(
@@ -101,13 +99,14 @@ export default function SignIn() {
                            } else {
                                toast.success("Connected");
                                router.push("/");
+                               router.refresh();
                            }
                         }}
                     >
                         {loading ? (
                             <Loader2 size={16} className="animate-spin" />
                         ) : (
-                            <p> Login </p>
+                            <p> Connexion </p>
                         )}
                     </Button>
 
@@ -121,7 +120,7 @@ export default function SignIn() {
                         <Button
                             variant="outline"
                             className={cn(
-                                "w-full gap-2"
+                                "w-full gap-2 text-white cursor-pointer"
                             )}
                             disabled={loading}
                             onClick={async () => {
@@ -147,7 +146,7 @@ export default function SignIn() {
                                 <path fill="#FBBC05" d="M56.281 156.37c-2.756-8.123-4.351-16.827-4.351-25.82c0-8.994 1.595-17.697 4.206-25.82l-.073-1.73L15.26 71.312l-1.335.635C5.077 89.644 0 109.517 0 130.55s5.077 40.905 13.925 58.602z"></path>
                                 <path fill="#EB4335" d="M130.55 50.479c24.514 0 41.05 10.589 50.479 19.438l36.844-35.974C195.245 12.91 165.798 0 130.55 0C79.49 0 35.393 29.301 13.925 71.947l42.211 32.783c10.59-31.477 39.891-54.251 74.414-54.251"></path>
                             </svg>
-                            Sign in with Google
+                            Se connecter avec google
                         </Button>
                     </div>
                 </div>
