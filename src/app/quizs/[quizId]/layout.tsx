@@ -1,10 +1,10 @@
 import React from "react";
-import {getQuizWithTitleOnly} from "@/lib/quiz/quiz.service";
+import {getQuiz} from "@/lib/quiz/quiz.service";
 import {notFound} from "next/navigation";
 
 export default async function QuizLayout({ params, children } : { params: Promise<{ quizId: string }>, children: React.ReactNode}) {
     const { quizId } = await params;
-    const quiz = await getQuizWithTitleOnly(Number(quizId));
+    const quiz = await getQuiz(Number(quizId));
     if (!quiz) { notFound() }
 
     return (
