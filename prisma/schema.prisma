@@ -15,21 +15,23 @@ datasource db {
 }
 
 model Quiz {
-  id         Int        @id @default(autoincrement())
+  id         Int          @id @default(autoincrement())
   name       String
   difficulty Difficulty
   questions  Question[]
+  results    QuizResult[]
 }
 
 model Question {
-  id       Int    @id @default(autoincrement())
-  question String
-  answer   String
-  wrong1   String
-  wrong2   String
-  wrong3   String
-  quiz     Quiz   @relation(fields: [quizId], references: [id])
-  quizId   Int
+  id              Int              @id @default(autoincrement())
+  question        String
+  answer          String
+  wrong1          String
+  wrong2          String
+  wrong3          String
+  quiz            Quiz             @relation(fields: [quizId], references: [id])
+  quizId          Int
+  questionResults QuestionResult[]
 }
 
 enum Difficulty {
@@ -69,11 +71,11 @@ model Session {
 }
 
 model Account {
-  id                    String    @id
+  id                    String       @id
   accountId             String
   providerId            String
   userId                String
-  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user                  User         @relation(fields: [userId], references: [id], onDelete: Cascade)
   accessToken           String?
   refreshToken          String?
   idToken               String?
@@ -83,6 +85,7 @@ model Account {
   password              String?
   createdAt             DateTime
   updatedAt             DateTime
+  results               QuizResult[]
 
   @@map("account")
 }
@@ -96,4 +99,30 @@ model Verification {
   updatedAt  DateTime?
 
   @@map("verification")
+}
+
+model QuizResult {
+  id        Int     @id @default(autoincrement())
+  quizId    Int
+  quiz      Quiz    @relation(fields: [quizId], references: [id], onDelete: Cascade)
+  accountId String
+  account   Account @relation(fields: [accountId], references: [id], onDelete: Cascade)
+
+  date            DateTime         @default(now())
+  score           Int
+  questionResults QuestionResult[]
+
+  @@map("result")
+}
+
+model QuestionResult {
+  questionId Int
+  question   Question   @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  resultId   Int
+  result     QuizResult @relation(fields: [resultId], references: [id], onDelete: Cascade)
+
+  isCorrect Boolean
+
+  @@id([questionId, resultId])
+  @@map("question_result")
 }
