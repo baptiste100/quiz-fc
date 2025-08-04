@@ -3,15 +3,23 @@
 import {useState} from "react";
 import {QuestionWithShuffledAnswers} from "@/types/question";
 import {redirect, usePathname} from "next/navigation";
+import {getSession} from "better-auth/api";
 
-export default function QuestionCard(props: { questions: QuestionWithShuffledAnswers[] }) {
+export default function QuestionCard({ questions, quizId } : {questions: QuestionWithShuffledAnswers[], quizId: number }) {
     const [currentQuestionNb, setCurrentQuestionNb] = useState<number>(0);
     const [nbCorrectAnswers, setNbCorrectAnswers] = useState<number>(0);
     const [hasResponded, setHasResponded] = useState<boolean>(false);
     const [responseIndex, setResponseIndex] = useState<number>();
 
-    const questions = props.questions;
     const pathname = usePathname();
+
+    const createQuizResult = async () => {
+        await fetch("/api/quiz-result", {
+            method: "POST",
+            body: JSON.stringify({ quizId: quizId, questions: questions}),
+            headers: {"Content-Type": "application/json"}
+        });
+    }
 
     const handlePlayerResponds = (isCorrect: boolean, index: number) => {
         const updateNbCorrectAnswers = nbCorrectAnswers + (isCorrect ? 1 : 0)

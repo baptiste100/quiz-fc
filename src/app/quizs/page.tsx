@@ -1,4 +1,4 @@
-import QuizList from "@/components/QuizList";
+import QuizList from "@/components/features/QuizList";
 
 export default async function QuizzesPage() {
     return (

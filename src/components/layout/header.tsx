@@ -1,8 +1,7 @@
 import Link from "next/link";
 import {getUser} from "@/lib/auth/auth-server";
-import {unauthorized} from "next/navigation";
 import Image from "next/image";
-import SignoutButton from "@/components/SignoutButton";
+import SignoutButton from "@/components/features/SignoutButton";
 
 export const Header = async () => {
     const user = await getUser();

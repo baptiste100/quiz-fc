@@ -1,4 +1,4 @@
-import QuizList from "@/components/QuizList";
+import QuizList from "@/components/features/QuizList";
 import Link from "next/link";
 import {getUser} from "@/lib/auth/auth-server";
 

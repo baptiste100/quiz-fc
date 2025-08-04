@@ -5,7 +5,7 @@ import {User} from "@/types/user";
 import {authClient} from "@/lib/auth/auth-client";
 import {useRouter} from "next/navigation";
 import {toast} from "sonner";
-import {EditableText} from "@/components/EditableText";
+import {EditableText} from "@/components/ui/editableText";
 
 export default function AccountInformations(props : { user: User }) {
     const user = props.user;

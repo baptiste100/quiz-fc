@@ -1,5 +1,5 @@
 import {getQuizWithQuestions} from "@/lib/quiz/quiz.service";
-import QuestionCard from "@/components/QuestionCard";
+import QuestionCard from "@/components/features/QuestionCard";
 import {notFound} from "next/navigation";
 import {Question, QuestionWithShuffledAnswers, ShuffledAnswer} from "@/types/question";
 
@@ -34,7 +34,7 @@ export default async function QuizPage({ params }: { params: Promise<{ quizId: s
 
     return (
         <div>
-            <QuestionCard questions={questions}/>
+            <QuestionCard questions={questions} quizId={quiz.id}/>
         </div>
     );
 }

@@ -1,6 +1,6 @@
 import {getUser} from "@/lib/auth/auth-server";
 import {redirect} from "next/navigation";
-import AccountInformations from "@/app/account/components/EditAccountForm";
+import AccountInformations from "@/components/features/EditAccountForm";
 
 export default async function Account() {
     const user = await getUser();
