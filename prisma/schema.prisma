@@ -41,7 +41,7 @@ enum Difficulty {
 }
 
 model User {
-  id            String    @id
+  id            String       @id
   name          String
   email         String
   emailVerified Boolean
@@ -50,6 +50,7 @@ model User {
   updatedAt     DateTime
   sessions      Session[]
   accounts      Account[]
+  quizResults   QuizResult[]
 
   @@unique([email])
   @@map("user")
@@ -71,11 +72,11 @@ model Session {
 }
 
 model Account {
-  id                    String       @id
+  id                    String    @id
   accountId             String
   providerId            String
   userId                String
-  user                  User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   accessToken           String?
   refreshToken          String?
   idToken               String?
@@ -85,7 +86,6 @@ model Account {
   password              String?
   createdAt             DateTime
   updatedAt             DateTime
-  results               QuizResult[]
 
   @@map("account")
 }
@@ -102,14 +102,14 @@ model Verification {
 }
 
 model QuizResult {
-  id        Int     @id @default(autoincrement())
-  quizId    Int
-  quiz      Quiz    @relation(fields: [quizId], references: [id], onDelete: Cascade)
-  accountId String
-  account   Account @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  id     Int    @id @default(autoincrement())
+  quizId Int
+  quiz   Quiz   @relation(fields: [quizId], references: [id], onDelete: Cascade)
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   date            DateTime         @default(now())
-  score           Int
+  score           Int?
   questionResults QuestionResult[]
 
   @@map("result")

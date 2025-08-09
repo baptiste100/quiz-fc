@@ -1,13 +1,14 @@
 import prisma from "@/lib/prisma";
-import {QuizResult} from "@/types/result";
+import {QuizResultData} from "@/types/result";
 
-export async function createQuizResult(resultData: QuizResult) {
-    await prisma.quizResult.create({
+export async function createQuizResult(resultData: QuizResultData) {
+    return prisma.quizResult.create({
         data: {
-            quiz: { connect: { id: resultData.quiz.id }},
-            account: { connect: { id: resultData.account.id }},
+            quiz: { connect: { id: resultData.quizId }},
+            user: { connect: { id: resultData.userId }},
             date: resultData.date,
             score: resultData.score
         }
     })
 }
+

@@ -2,6 +2,7 @@ import {getQuizWithQuestions} from "@/lib/quiz/quiz.service";
 import QuestionCard from "@/components/features/QuestionCard";
 import {notFound} from "next/navigation";
 import {Question, QuestionWithShuffledAnswers, ShuffledAnswer} from "@/types/question";
+import {getUser} from "@/lib/auth/auth-server";
 
 function shuffleArray<T>(array: T[]): T[] {
     return array.sort(() => Math.random() - 0.5);
@@ -25,8 +26,9 @@ function convertQuestion(q: Question): QuestionWithShuffledAnswers {
 export default async function QuizPage({ params }: { params: Promise<{ quizId: string }>}) {
     const { quizId } = await params;
     const quiz = await getQuizWithQuestions(Number(quizId));
+    const user = await getUser();
 
-    if (!quiz || quiz.questions.length <= 0) {
+    if (!user || !quiz || quiz.questions.length <= 0) {
         notFound();
     }
 
@@ -34,7 +36,7 @@ export default async function QuizPage({ params }: { params: Promise<{ quizId: s
 
     return (
         <div>
-            <QuestionCard questions={questions} quizId={quiz.id}/>
+            <QuestionCard questions={questions} quizId={quiz.id} userId={user.id}/>
         </div>
     );
 }
