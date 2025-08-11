@@ -6,7 +6,7 @@ export default async function Home() {
     const user = await getUser();
 
     return (
-        <div className="flex flex-col items-center gap-25 px-10">
+        <div className="flex flex-col items-center gap-10 px-10">
             <div className="flex flex-col items-center gap-10">
                 <h1 className="py-15 text-5xl text-center font-bold">QUIZ FC</h1>
                 { !user &&
