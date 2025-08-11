@@ -3,6 +3,7 @@ import QuestionCard from "@/components/features/QuestionCard";
 import {notFound} from "next/navigation";
 import {Question, QuestionWithShuffledAnswers, ShuffledAnswer} from "@/types/question";
 import {getUser} from "@/lib/auth/auth-server";
+import {QuizResult} from "@/types/result";
 
 function shuffleArray<T>(array: T[]): T[] {
     return array.sort(() => Math.random() - 0.5);
@@ -23,6 +24,21 @@ function convertQuestion(q: Question): QuestionWithShuffledAnswers {
     };
 }
 
+async function createQuizResult(quizId: number, userId: string, questions: QuestionWithShuffledAnswers[]) {
+    console.log("createQuizResult");
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/quiz-result`, {
+        method: "POST",
+        body: JSON.stringify({ quizId: quizId, userId: userId, questions: questions}),
+        headers: {"Content-Type": "application/json"}
+    });
+
+    if (!response.ok) {
+        throw new Error(`Failed to create quiz result : ${response.status}`);
+    }
+
+    return response.json();
+}
+
 export default async function QuizPage({ params }: { params: Promise<{ quizId: string }>}) {
     const { quizId } = await params;
     const quiz = await getQuizWithQuestions(Number(quizId));
@@ -33,10 +49,11 @@ export default async function QuizPage({ params }: { params: Promise<{ quizId: s
     }
 
     const questions= shuffleArray(quiz.questions).map(convertQuestion);
+    const quizResult: QuizResult = await createQuizResult(quiz.id, user.id, questions);
 
     return (
         <div>
-            <QuestionCard questions={questions} quizId={quiz.id} userId={user.id}/>
+            <QuestionCard questions={questions} quizResultId={quizResult.id}/>
         </div>
     );
 }

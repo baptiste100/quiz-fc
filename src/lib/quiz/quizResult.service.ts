@@ -12,3 +12,13 @@ export async function createQuizResult(resultData: QuizResultData) {
     })
 }
 
+export async function updateScore(resultId: number, newScore: number) {
+    return prisma.quizResult.update({
+        where: {
+            id: resultId
+        },
+        data: {
+            score: newScore
+        }
+    })
+}
