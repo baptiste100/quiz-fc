@@ -1,5 +1,6 @@
 import prisma from "@/lib/prisma";
 import {QuizResultData} from "@/types/result";
+import {notFound} from "next/navigation";
 
 export async function createQuizResult(resultData: QuizResultData) {
     return prisma.quizResult.create({
@@ -19,6 +20,17 @@ export async function updateScore(resultId: number, newScore: number) {
         },
         data: {
             score: newScore
+        }
+    })
+}
+
+export async function getQuizResultWithQuestionResults(resultId: number) {
+   return prisma.quizResult.findUnique({
+        where: {
+            id: +resultId
+        },
+        include: {
+            questionResults: true
         }
     })
 }

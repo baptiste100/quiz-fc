@@ -49,7 +49,7 @@ export default function QuestionCard({ questions, quizResultId } : {questions: Q
                         throw new Error(`Response status: ${response.status}`);
                     }
                 })
-                redirect(pathname + `/result?score=${updatedNbCorrectAnswers}&total=${questions.length}`);
+                redirect(pathname + `/${quizResultId}`);
             }
         }, 1000)
     }
