@@ -1,11 +1,12 @@
 import {NextRequest, NextResponse} from "next/server";
 import {createQuizResult, updateScore} from "@/lib/quiz/quizResult.service";
+import {QuizResult} from "@/types/result";
 
 export async function POST(req: NextRequest) {
     const body= await req.json();
 
     try {
-        const result = await createQuizResult(body);
+        const result: QuizResult = await createQuizResult(body);
         return NextResponse.json(result);
     } catch(error) {
         console.error("Erreur lors de l'enregistrement du quiz :", error);

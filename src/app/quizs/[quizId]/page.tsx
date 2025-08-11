@@ -25,7 +25,6 @@ function convertQuestion(q: Question): QuestionWithShuffledAnswers {
 }
 
 async function createQuizResult(quizId: number, userId: string, questions: QuestionWithShuffledAnswers[]) {
-    console.log("createQuizResult");
     const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/quiz-result`, {
         method: "POST",
         body: JSON.stringify({ quizId: quizId, userId: userId, questions: questions}),

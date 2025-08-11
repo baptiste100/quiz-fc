@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { getQuizResultWithQuestionResults } from "@/lib/quiz/quizResult.service";
 import {notFound} from "next/navigation";
+import {QuestionResult, QuizResultWithQuestions} from "@/types/result";
 
 export default async function PageResult({ params } : { params: Promise<{ resultId: number }>}) {
     const { resultId } = await params;
-    const quizResult = await getQuizResultWithQuestionResults(resultId);
+    const quizResult: QuizResultWithQuestions | null = await getQuizResultWithQuestionResults(resultId);
     if (!quizResult) notFound();
-    const questionResults = quizResult.questionResults;
+    const questionResults: QuestionResult[] = quizResult.questionResults;
 
     return (
         <div>

@@ -1,7 +1,7 @@
-import {QuestionResultData} from "@/types/result";
+import {QuestionResult} from "@/types/result";
 import prisma from "@/lib/prisma";
 
-export async function createQuestionResult(questionResultData: QuestionResultData) {
+export async function createQuestionResult(questionResultData: QuestionResult) {
     return prisma.questionResult.create({
         data: {
             result: { connect: { id: questionResultData.resultId }},
