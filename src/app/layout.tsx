@@ -29,9 +29,11 @@ export default async function RootLayout({
   return (
     <html lang="fr">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} flex flex-col gap-5 items-center antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} flex flex-col gap-5 items-center antialiased pb-5`}
       >
-        <Header/>
+        <div className="w-full">
+          <Header/>
+        </div>
         <Toaster className="bg-black text-black"/>
         <div>
           {children}

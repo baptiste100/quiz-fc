@@ -7,8 +7,8 @@ export const Header = async () => {
     const user = await getUser();
 
     return (
-        <header className="flex items-center text-4xl gap-4 w-full px-10 py-5 bg-gradient-to-br bg-stone-800 to-stone-950">
-            <Link href="/" >QuizFC</Link>
+        <header className="flex items-center text-4xl gap-4 m-5 px-10 py-5 bg-gradient-to-br from-stone-900 to-stone-950 rounded-xl">
+            <Link className="font-bold" href="/" >QuizFC</Link>
             <div className="flex-1"></div>
             <div className="flex gap-5">
                 {
@@ -26,8 +26,8 @@ export const Header = async () => {
                         </div>
                         ) : (
                         <>
-                            <Link className="text-lg p-2 rounded-lg hover:bg-stone-700" href="/auth/signin" >Connexion</Link>
-                            <Link className="text-lg p-2 rounded-lg hover:bg-stone-700" href="/auth/signup" >Créer un compte</Link>
+                            <Link className="text-lg p-2 rounded-lg hover:bg-stone-900" href="/auth/signin" >Connexion</Link>
+                            <Link className="text-lg p-2 rounded-lg hover:bg-stone-900" href="/auth/signup" >Créer un compte</Link>
                         </>
                     )
                 }
