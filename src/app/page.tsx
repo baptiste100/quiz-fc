@@ -8,7 +8,7 @@ export default async function Home() {
     return (
         <div className="flex flex-col items-center gap-10 px-10">
             <div className="flex flex-col items-center gap-10">
-                <h1 className="py-10 text-5xl text-center font-bold">QUIZ FC</h1>
+                <h1 className="py-10 text-6xl text-center font-bold">QUIZ FC</h1>
                 { !user &&
                     <div className="flex gap-10 text-center">
                         <Link className="text-lg p-5 rounded-lg bg-gradient-to-br from-stone-800 to-stone-950 border border-transparent hover:border-white w-50" href="/auth/signin" >Connexion</Link>
