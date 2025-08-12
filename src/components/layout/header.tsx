@@ -2,9 +2,9 @@ import Link from "next/link";
 import {getUser} from "@/lib/auth/auth-server";
 import Image from "next/image";
 import SignoutButton from "@/components/features/SignoutButton";
-
+import {User} from "better-auth";
 export const Header = async () => {
-    const user = await getUser();
+    const user: User | undefined = await getUser();
 
     return (
         <header className="flex items-center text-4xl gap-4 m-5 px-10 py-5 bg-gradient-to-br from-stone-900 to-stone-950 rounded-xl">

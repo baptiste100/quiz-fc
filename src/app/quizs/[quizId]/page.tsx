@@ -4,6 +4,8 @@ import {notFound} from "next/navigation";
 import {Question, QuestionWithShuffledAnswers, ShuffledAnswer} from "@/types/question";
 import {getUser} from "@/lib/auth/auth-server";
 import {QuizResult} from "@/types/result";
+import {Quiz} from "@/types/quiz";
+import {User} from "better-auth";
 
 function shuffleArray<T>(array: T[]): T[] {
     return array.sort(() => Math.random() - 0.5);
@@ -40,10 +42,10 @@ async function createQuizResult(quizId: number, userId: string, questions: Quest
 
 export default async function QuizPage({ params }: { params: Promise<{ quizId: string }>}) {
     const { quizId } = await params;
-    const quiz = await getQuizWithQuestions(Number(quizId));
-    const user = await getUser();
+    const quiz: Quiz | null = await getQuizWithQuestions(Number(quizId));
+    const user: User | undefined = await getUser();
 
-    if (!user || !quiz || quiz.questions.length <= 0) {
+    if (!user || !quiz || !quiz.questions || quiz.questions.length <= 0) {
         notFound();
     }
 

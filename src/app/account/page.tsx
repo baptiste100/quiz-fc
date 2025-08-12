@@ -1,9 +1,10 @@
 import {getUser} from "@/lib/auth/auth-server";
 import {redirect} from "next/navigation";
 import AccountInformations from "@/components/features/EditAccountForm";
+import {User} from "better-auth";
 
 export default async function Account() {
-    const user = await getUser();
+    const user: User | undefined = await getUser();
 
     if (!user) {
         redirect("/");

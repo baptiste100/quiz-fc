@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image";
-import {User} from "@/types/user";
+import {User} from "better-auth";
 import {authClient} from "@/lib/auth/auth-client";
 import {useRouter} from "next/navigation";
 import {toast} from "sonner";
@@ -9,8 +9,8 @@ import {EditableText} from "@/components/ui/editableText";
 
 export default function AccountInformations(props : { user: User }) {
     const user = props.user;
-    const name = user.name;
-    const email = user.email;
+    const name: string = user.name;
+    const email: string = user.email;
     const router = useRouter();
 
     async function updateName(newName: string) {

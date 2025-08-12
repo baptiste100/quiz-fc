@@ -1,9 +1,10 @@
 import QuizList from "@/components/features/QuizList";
 import Link from "next/link";
 import {getUser} from "@/lib/auth/auth-server";
+import {User} from "better-auth";
 
 export default async function Home() {
-    const user = await getUser();
+    const user: User | undefined = await getUser();
 
     return (
         <div className="flex flex-col items-center gap-10 px-10">
