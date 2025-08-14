@@ -20,6 +20,6 @@ export default function SignoutButton() {
     }
 
     return (
-        <button className="text-lg px-5 p-2 rounded-lg hover:bg-stone-900 cursor-pointer" onClick={() => { signOut(); }} >Déconnexion</button>
+        <button className="text-lg px-5 p-2 rounded-lg hover:bg-[color:var(--button-bg-hover)] cursor-pointer" onClick={() => { signOut(); }} >Déconnexion</button>
     )
 }

@@ -21,7 +21,7 @@ export default function SignIn() {
     const router = useRouter();
 
     return (
-        <Card className="w-120 mt-[5%] bg-stone-900 border-transparent text-white">
+        <Card className="w-120 mt-[5%] bg-[color:var(--div-bg)] border-transparent text-[color:var(--dark-text-color)]">
             <CardHeader>
                 <CardTitle className="text-lg md:text-xl ">Connexion</CardTitle>
                 <CardDescription className="text-xs md:text-sm">
@@ -77,7 +77,7 @@ export default function SignIn() {
 
                     <Button
                         type="submit"
-                        className="w-full cursor-pointer bg-white hover:bg-gray-300 text-black"
+                        className="w-full cursor-pointer bg-[color:var(--button-bg)] hover:bg-[color:var(--button-bg-hover)]  text-[color:var(--light-text-color)]"
                         disabled={loading}
                         onClick={async () => {
                            const { error } = await signIn.email(
