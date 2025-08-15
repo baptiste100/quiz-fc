@@ -18,7 +18,7 @@ export const Header = async () => {
                             <p>{user.name}</p>
                             {user.image &&
                                 <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
-                                    <Link href="/account">
+                                    <Link href="/account/informations">
                                         <Image className="w-full h-full object-cover" src={user.image} alt="user image" width={40} height={40}/>
                                     </Link>
                                 </div>

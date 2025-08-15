@@ -19,7 +19,7 @@ export default function AccountInformations(props : { user: User }) {
         },
             {
                 onSuccess: () => {
-                    router.push("/account");
+                    router.push("/account/informations");
                     router.refresh();
                 },
                 onError: (error) => {
@@ -38,7 +38,7 @@ export default function AccountInformations(props : { user: User }) {
                 },
                     {
                         onSuccess: () => {
-                            router.push("/account");
+                            router.push("/account/informations");
                             router.refresh();
                         },
                         onError: (error) => {
