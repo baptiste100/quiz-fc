@@ -14,6 +14,10 @@ export default function AccountSidebar() {
             link: "informations",
             label: "Mes informations"
         },
+        {
+            link: "results",
+            label: "Mes résultats"
+        },
     ]
 
     const pathname = usePathname();

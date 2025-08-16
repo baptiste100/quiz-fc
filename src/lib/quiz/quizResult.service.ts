@@ -33,3 +33,14 @@ export async function getQuizResultWithQuestionResults(resultId: number) {
         }
     });
 }
+
+export async function getQuizResultsOfUser(userId: string) {
+    return prisma.quizResult.findMany({
+        where: {
+            userId: userId
+        },
+        include: {
+            quiz: true
+        }
+    })
+}
