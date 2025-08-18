@@ -1,47 +1,15 @@
 "use client"
 
 import {QuizResultWithQuiz} from "@/types/result";
-
-const formatDate = (date: Date) => {
-    return date.toLocaleDateString('fr-FR', {
-        day: '2-digit',
-        month: '2-digit',
-        year: 'numeric'
-    });
-}
-
-const getHoursFromDate = (date: Date) => {
-    return date.toLocaleTimeString('fr-FR', {
-        hour: '2-digit',
-        minute: '2-digit'
-    });
-}
-
-const getDifficultyColor = (difficulty: string) => {
-    switch (difficulty?.toLowerCase()) {
-        case 'easy':
-            return 'bg-green-100 text-green-800';
-        case 'medium':
-            return 'bg-orange-100 text-orange-800';
-        case 'hard':
-            return 'bg-red-100 text-red-800';
-        default:
-            return 'bg-gray-100 text-gray-800';
-    }
-}
-
-const getScoreColor = (score: number) => {
-    if (score >= 8) return 'text-green-600 bg-green-50';
-    if (score >= 6) return 'text-orange-600 bg-orange-50';
-    return 'text-red-600 bg-red-50';
-}
+import {getDifficultyColor, getScoreColor} from "@/utils/color";
+import {formatDate, getHoursFromDate} from "@/utils/date";
 
 export default function PlayerResults(props: { quizResults: QuizResultWithQuiz[] }) {
     const quizResults: QuizResultWithQuiz[] = props.quizResults;
 
     if (quizResults.length === 0) {
         return (
-            <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 text-center">
+            <div className="bg-white rounded-2xl border border-gray-100 p-8 text-center">
                 <div className="text-gray-400 text-lg">Aucun quiz effectué pour le moment</div>
             </div>
         );
