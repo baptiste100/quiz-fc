@@ -1,5 +1,5 @@
 import prisma from "@/lib/prisma";
-import {QuizResult} from "@/types/result";
+import {QuizResult} from "@/types/quiz-result";
 
 export async function createQuizResult(resultData: QuizResult) {
     return prisma.quizResult.create({
@@ -40,7 +40,12 @@ export async function getQuizResultsOfUser(userId: string) {
             userId: userId
         },
         include: {
-            quiz: true
+            quiz: true,
+            questionResults: {
+                include: {
+                    question: true
+                }
+            }
         }
     })
 }

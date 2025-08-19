@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { getQuizResultWithQuestionResults } from "@/lib/quiz/quizResult.service";
 import {notFound} from "next/navigation";
-import {QuestionResult, QuizResultWithQuestions} from "@/types/result";
+import {QuizResultWithQuestions} from "@/types/quiz-result";
+import {QuestionResult} from "@/types/question-result";
 
 export default async function PageResult({ params } : { params: Promise<{ resultId: number }>}) {
     const { resultId } = await params;

@@ -3,7 +3,7 @@ import QuestionCard from "@/components/features/QuestionCard";
 import {notFound} from "next/navigation";
 import {Question, QuestionWithShuffledAnswers, ShuffledAnswer} from "@/types/question";
 import {getUser} from "@/lib/auth/auth-server";
-import {QuizResult} from "@/types/result";
+import {QuizResult} from "@/types/quiz-result";
 import {Quiz} from "@/types/quiz";
 import {User} from "better-auth";
 

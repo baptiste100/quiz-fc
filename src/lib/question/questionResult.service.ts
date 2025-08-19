@@ -1,4 +1,4 @@
-import {QuestionResult} from "@/types/result";
+import {QuestionResult} from "@/types/question-result";
 import prisma from "@/lib/prisma";
 
 export async function createQuestionResult(questionResultData: QuestionResult) {

@@ -1,4 +1,5 @@
 import {Quiz} from "@/types/quiz";
+import {QuestionResult, QuestionResultWithQuestion} from "@/types/question-result";
 
 export type QuizResult = {
     id: number;
@@ -12,12 +13,11 @@ export type QuizResultWithQuestions = QuizResult & {
     questionResults: QuestionResult[];
 }
 
-export type QuizResultWithQuiz = QuizResult & {
+export type QuizResultWithQuestionsAndQuiz = QuizResult & {
     quiz: Quiz;
+    questionResults: QuestionResultWithQuestion[];
 }
 
-export type QuestionResult = {
-    resultId: number;
-    questionId: number;
-    isCorrect: boolean
+export type QuizResultWithQuiz = QuizResult & {
+    quiz: Quiz;
 }

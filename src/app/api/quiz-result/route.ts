@@ -1,6 +1,6 @@
 import {NextRequest, NextResponse} from "next/server";
 import {createQuizResult, updateScore} from "@/lib/quiz/quizResult.service";
-import {QuizResult} from "@/types/result";
+import {QuizResult} from "@/types/quiz-result";
 
 export async function POST(req: NextRequest) {
     const body= await req.json();
