@@ -1,32 +1,19 @@
 import {getQuizWithQuestions} from "@/lib/quiz/quiz.service";
 import QuestionCard from "@/components/features/QuestionCard";
 import {notFound} from "next/navigation";
-import {Question, QuestionWithShuffledAnswers, ShuffledAnswer} from "@/types/question";
+import {Question} from "@/types/question";
 import {getUser} from "@/lib/auth/auth-server";
 import {QuizResult} from "@/types/quiz-result";
 import {Quiz} from "@/types/quiz";
 import {User} from "better-auth";
+import {shuffleArray} from "@/utils/array";
 
-function shuffleArray<T>(array: T[]): T[] {
-    return array.sort(() => Math.random() - 0.5);
+function shuffleQuestionAnswers(q: Question): Question {
+    q.answers = shuffleArray(q.answers);
+    return q;
 }
 
-function convertQuestion(q: Question): QuestionWithShuffledAnswers {
-    const answers: ShuffledAnswer[] = shuffleArray([
-        { text: q.answer, isCorrect: true },
-        { text: q.wrong1, isCorrect: false },
-        { text: q.wrong2, isCorrect: false },
-        { text: q.wrong3, isCorrect: false },
-    ]);
-
-    return {
-        id: q.id,
-        question: q.question,
-        answers,
-    };
-}
-
-async function createQuizResult(quizId: number, userId: string, questions: QuestionWithShuffledAnswers[]) {
+async function createQuizResult(quizId: number, userId: string, questions: Question[]) {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/quiz-result`, {
         method: "POST",
         body: JSON.stringify({ quizId: quizId, userId: userId, questions: questions}),
@@ -49,7 +36,7 @@ export default async function QuizPage({ params }: { params: Promise<{ quizId: s
         notFound();
     }
 
-    const questions= shuffleArray(quiz.questions).map(convertQuestion);
+    const questions= shuffleArray(quiz.questions).map(shuffleQuestionAnswers);
     const quizResult: QuizResult = await createQuizResult(quiz.id, user.id, questions);
 
     return (

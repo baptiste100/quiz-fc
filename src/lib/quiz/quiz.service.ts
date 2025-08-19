@@ -14,7 +14,11 @@ export async function getQuizWithQuestions(quizId: number) {
     return prisma.quiz.findUnique({
         where: { id: quizId },
         include: {
-            questions: true
+            questions: {
+                include: {
+                    answers: true
+                }
+            }
         }
     })
 }

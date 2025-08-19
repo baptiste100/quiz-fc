@@ -1,10 +1,10 @@
 "use client"
 
 import {useState} from "react";
-import {QuestionWithShuffledAnswers} from "@/types/question";
+import {Question} from "@/types/question";
 import {redirect, usePathname} from "next/navigation";
 
-export default function QuestionCard({ questions, quizResultId } : {questions: QuestionWithShuffledAnswers[], quizResultId: number }) {
+export default function QuestionCard({ questions, quizResultId } : {questions: Question[], quizResultId: number }) {
     const [currentQuestionNb, setCurrentQuestionNb] = useState<number>(0);
     const [nbCorrectAnswers, setNbCorrectAnswers] = useState<number>(0);
     const [hasResponded, setHasResponded] = useState<boolean>(false);
@@ -110,7 +110,7 @@ export default function QuestionCard({ questions, quizResultId } : {questions: Q
                                         <span className={`w-8 h-8 rounded-full border-2 flex items-center justify-center mr-3 text-sm font-bold ${hasResponded && answer.isCorrect ? 'border-green-500 bg-green-500 text-white' : hasResponded && index === responseIndex ? 'border-red-500 bg-red-500 text-white' : 'border-gray-300'}`}>
                                             {String.fromCharCode(65 + index)}
                                         </span>
-                                        {answer.text}
+                                        {answer.answerText}
                                     </span>
                                 </button>
                             )
