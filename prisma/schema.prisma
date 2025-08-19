@@ -25,10 +25,6 @@ model Quiz {
 model Question {
   id              Int              @id @default(autoincrement())
   question        String
-  answer          String?
-  wrong1          String?
-  wrong2          String?
-  wrong3          String?
   quiz            Quiz             @relation(fields: [quizId], references: [id])
   quizId          Int
   questionResults QuestionResult[]
