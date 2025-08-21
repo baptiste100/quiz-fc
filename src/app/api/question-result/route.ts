@@ -3,6 +3,7 @@ import {createQuestionResult} from "@/lib/question/questionResult.service";
 
 export async function POST(req: NextRequest) {
     const body = await req.json();
+    console.log(body);
 
     try {
         const result = await createQuestionResult(body);

@@ -2,7 +2,7 @@ import AccountTabHeader from "@/components/layout/accountTabHeader";
 import PlayerResults from "@/components/features/PlayerResults";
 import {User} from "better-auth";
 import {getUser} from "@/lib/auth/auth-server";
-import {QuizResultWithQuestionsAndQuiz, QuizResultWithQuiz} from "@/types/quiz-result";
+import {QuizResultWithQuestionsAndQuiz} from "@/types/quiz-result";
 import {getQuizResultsOfUser} from "@/lib/quiz/quizResult.service";
 import {redirect} from "next/navigation";
 

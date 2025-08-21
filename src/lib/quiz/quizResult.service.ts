@@ -43,7 +43,11 @@ export async function getQuizResultsOfUser(userId: string) {
             quiz: true,
             questionResults: {
                 include: {
-                    question: true
+                    question: {
+                        include: {
+                            answers: true
+                        }
+                    }
                 }
             }
         }

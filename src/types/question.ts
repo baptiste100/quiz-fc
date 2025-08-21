@@ -5,14 +5,3 @@ export type Question = {
     question: string;
     answers: Answer[]
 }
-
-export type QuestionWithShuffledAnswers = {
-    id: number
-    question: string
-    answers: ShuffledAnswer[]
-}
-
-export type ShuffledAnswer = {
-    text: string | null
-    isCorrect: boolean
-}

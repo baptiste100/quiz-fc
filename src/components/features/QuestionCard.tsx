@@ -12,10 +12,11 @@ export default function QuestionCard({ questions, quizResultId } : {questions: Q
 
     const pathname = usePathname();
 
-    async function createQuestionResult(isCorrect: boolean) {
+    async function createQuestionResult(isCorrect: boolean, givenAnswerId: number) {
+        console.log("givenAnswerId : " + givenAnswerId);
         return fetch("/api/question-result", {
             method: "POST",
-            body: JSON.stringify({ questionId: questions[currentQuestionNb].id, resultId: quizResultId, isCorrect: isCorrect }),
+            body: JSON.stringify({ questionId: questions[currentQuestionNb].id, resultId: quizResultId, isCorrect: isCorrect, givenAnswerId: givenAnswerId }),
             headers: {"Content-Type": "application/json"}
         })
     }
@@ -27,12 +28,12 @@ export default function QuestionCard({ questions, quizResultId } : {questions: Q
         });
     }
 
-    const handlePlayerResponds = (isCorrect: boolean, index: number) => {
+    const handlePlayerResponds = (isCorrect: boolean, givenAnswerId: number) => {
         const updatedNbCorrectAnswers = nbCorrectAnswers + (isCorrect ? 1 : 0)
         setHasResponded(true);
-        setResponseIndex(index);
+        setResponseIndex(givenAnswerId);
 
-        createQuestionResult(isCorrect).then((response) => {
+        createQuestionResult(isCorrect, givenAnswerId).then((response) => {
             if (!response.ok) {
                 throw new Error(`Response status: ${response.status}`);
             }
@@ -92,7 +93,7 @@ export default function QuestionCard({ questions, quizResultId } : {questions: Q
                             if (hasResponded) {
                                 if (answer.isCorrect) {
                                     buttonStyle = "border-green-500 bg-green-50 text-green-700";
-                                } else if (index === responseIndex) {
+                                } else if (answer.id === responseIndex) {
                                     buttonStyle = "border-red-500 bg-red-50 text-red-700";
                                 } else {
                                     buttonStyle = "border-gray-200 bg-gray-50 text-gray-500";
@@ -101,13 +102,13 @@ export default function QuestionCard({ questions, quizResultId } : {questions: Q
 
                             return (
                                 <button
-                                    key={index}
-                                    onClick={() => handlePlayerResponds(answer.isCorrect, index)}
+                                    key={answer.id}
+                                    onClick={() => handlePlayerResponds(answer.isCorrect, answer.id)}
                                     disabled={hasResponded}
                                     className={`w-full p-4 text-left rounded-lg border-2 transition-all duration-200 font-medium ${buttonStyle} ${!hasResponded ? 'cursor-pointer' : 'cursor-default'}`}
                                 >
                                     <span className="flex items-center">
-                                        <span className={`w-8 h-8 rounded-full border-2 flex items-center justify-center mr-3 text-sm font-bold ${hasResponded && answer.isCorrect ? 'border-green-500 bg-green-500 text-white' : hasResponded && index === responseIndex ? 'border-red-500 bg-red-500 text-white' : 'border-gray-300'}`}>
+                                        <span className={`w-8 h-8 rounded-full border-2 flex items-center justify-center mr-3 text-sm font-bold ${hasResponded && answer.isCorrect ? 'border-green-500 bg-green-500 text-white' : hasResponded && answer.id === responseIndex ? 'border-red-500 bg-red-500 text-white' : 'border-gray-300'}`}>
                                             {String.fromCharCode(65 + index)}
                                         </span>
                                         {answer.answerText}
