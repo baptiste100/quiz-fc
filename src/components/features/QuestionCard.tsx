@@ -56,7 +56,7 @@ export default function QuestionCard({ questions, quizResultId } : {questions: Q
     }
 
     return (
-        <div className="bg-gradient-to-br from-green-50 to-orange-50 rounded-xl flex items-center justify-center p-10">
+        <div className=" rounded-xl flex items-center justify-center p-10">
             <div className="w-full max-w-2xl">
                 {/* Progress bar */}
                 <div className="mb-8">

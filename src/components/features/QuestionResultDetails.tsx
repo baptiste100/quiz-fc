@@ -34,23 +34,23 @@ export default function QuestionResultDetails({ questionResult } : { questionRes
                     <h4 className="text-sm font-semibold text-gray-700 mb-3">Réponses :</h4>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         { questionResult.question.answers.map((answer) => (
-                            <>
+                            <div key={answer.id}>
                                 {
                                     answer.isCorrect ?
-                                        <div key={answer.id} className="bg-green-50 border border-green-200 rounded-lg p-3">
+                                        <div className="bg-green-50 border border-green-200 rounded-lg p-3">
                                                         <span className={`text-xs text-green-600 font-semibold block mb-1`}>BONNE REPONSE</span>
                                                         <span className="text-green-800">{answer.answerText}</span>
                                         </div> : answer.id == questionResult.givenAnswerId ?
-                                        <div key={answer.id} className="bg-red-50 border border-red-200 rounded-lg p-3">
+                                        <div className="bg-red-50 border border-red-200 rounded-lg p-3">
                                             <span className={`text-xs text-red-600 font-semibold block mb-1`}>MAUVAISE REPONSE</span>
                                             <span className="text-red-800">{answer.answerText}</span>
                                         </div> :
-                                        <div key={answer.id} className="bg-gray-50 border border-gray-200 rounded-lg p-3">
+                                        <div className="bg-gray-50 border border-gray-200 rounded-lg p-3">
                                             <span className={`text-xs text-gray-600 font-semibold block mb-1`}>MAUVAISE REPONSE</span>
                                             <span className="text-gray-800">{answer.answerText}</span>
                                         </div>
                                 }
-                            </>
+                            </div>
                         ))}
                     </div>
                 </div>

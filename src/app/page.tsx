@@ -3,6 +3,7 @@ import Link from "next/link";
 import {getUser} from "@/lib/auth/auth-server";
 import {User} from "better-auth";
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 
 export default async function Home() {
     const user: User | undefined = await getUser();
@@ -10,17 +11,19 @@ export default async function Home() {
     return (
         <div className="flex flex-col items-center gap-10 px-10">
             <div className="flex flex-col items-center gap-10">
-                <h1 className="py-10 text-6xl text-center font-bold text-green-600">QUIZ FC</h1>
+                <h1 className="text-6xl text-center">
+                    <Image src="/images/quiz-fc-logo-allonge-colore.png" alt="Logo Quiz FC" width={400} height={400}/>
+                </h1>
                 { !user &&
                     <div className="flex gap-10 text-center">
-                        <Link className="w-60 py-2 px-5 text-2xl border-3 border-[color:var(--button-bg)] hover:bg-[color:var(--button-bg)] hover:text-[color:var(--light-text-color)] text-[color:var(--first-color-light)] rounded-lg" href="/auth/signin" >Connexion</Link>
-                        <Link className="w-60 py-2 px-5 text-2xl border-3 border-[color:var(--button-bg)] hover:bg-[color:var(--button-bg)] hover:text-[color:var(--light-text-color)] text-[color:var(--first-color-light)] rounded-lg" href="/auth/signup" >Créer un compte</Link>
+                        <Link className="w-60 text-center gap-4 items-center py-2 px-4 text-2xl bg-gradient-to-r from-[color:var(--first-color)] to-[color:var(--first-color-light)] hover:from-[color:var(--first-color-light)] hover:to-[color:var(--first-color)] text-[color:var(--light-text-color)] rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105" href="/auth/signin" >Connexion</Link>
+                        <Link className="w-60 text-center gap-4 items-center py-2 px-4 text-2xl bg-gradient-to-r from-[color:var(--first-color)] to-[color:var(--first-color-light)] hover:from-[color:var(--first-color-light)] hover:to-[color:var(--first-color)] text-[color:var(--light-text-color)] rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105" href="/auth/signup" >Créer un compte</Link>
                     </div>
                 }
             </div>
             <QuizList/>
-            <Link href="/quizs" className="flex flex-row gap-4 items-center py-2 px-5 text-2xl border-3 border-[color:var(--button-bg-2)] hover:bg-[color:var(--button-bg-2)] hover:text-[color:var(--light-text-color)] text-[color:var(--second-color)] rounded-lg">
-                <ArrowRight/>
+            <Link href="/quizs" className="group flex flex-row gap-4 items-center py-2 px-4 text-2xl bg-gradient-to-r from-[color:var(--second-color)] to-[color:var(--second-color-light)] hover:from-[color:var(--second-color-light)] hover:to-[color:var(--second-color)] text-[color:var(--light-text-color)] rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                <ArrowRight className="transition-transform duration-300"/>
                 <p>Tous les quiz</p>
             </Link>
         </div>
