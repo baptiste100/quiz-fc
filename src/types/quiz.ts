@@ -1,4 +1,4 @@
-import { Difficulty } from "@/generated/prisma";
+import { Difficulty } from "@prisma/client";
 import { Question } from "@/types/question";
 
 export type Quiz = {
