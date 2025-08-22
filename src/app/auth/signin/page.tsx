@@ -4,9 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Checkbox } from "@/components/ui/checkbox";
 import { useState } from "react";
-import { Loader2, Key } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { signIn } from "@/lib/auth/auth-client";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -17,7 +16,6 @@ export default function SignIn() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
-    const [rememberMe, setRememberMe] = useState(false);
     const router = useRouter();
 
     return (
@@ -47,12 +45,6 @@ export default function SignIn() {
                     <div className="grid gap-2">
                         <div className="flex items-center ">
                             <Label htmlFor="password">Mot de passe</Label>
-                            <Link
-                                href="#"
-                                className="ml-auto inline-block text-sm underline"
-                            >
-                                Mot de passe oublié ?
-                            </Link>
                         </div>
 
                         <Input
@@ -63,16 +55,6 @@ export default function SignIn() {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />
-                    </div>
-
-                    <div className="flex items-center gap-2">
-                        <Checkbox
-                            id="remember"
-                            onClick={() => {
-                                setRememberMe(!rememberMe);
-                            }}
-                        />
-                        <Label htmlFor="remember">Se souvenir de moi</Label>
                     </div>
 
                     <Button
