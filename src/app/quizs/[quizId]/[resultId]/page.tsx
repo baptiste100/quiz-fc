@@ -93,10 +93,10 @@ export default async function PageResult({ params } : { params: Promise<{ result
                     </Link>
                     <Link
                         href="/quizs"
-                        className="group flex items-center justify-center gap-3 py-4 px-6 bg-gradient-to-r from-[color:var(--second-color)] to-[color:var(--second-color-light)] hover:from-[color:var(--second-color-light)] hover:to-[color:var(--second-color)] text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                        className="group flex-1 flex items-center justify-center gap-3 py-4 px-6 bg-gradient-to-r from-[color:var(--second-color)] to-[color:var(--second-color-light)] hover:from-[color:var(--second-color-light)] hover:to-[color:var(--second-color)] text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
                     >
                         <Target className="w-5 h-5 transition-transform duration-300 group-hover:rotate-12"/>
-                        <span>Autres quiz</span>
+                        <span>Jouer à d&#39;autres quizs</span>
                     </Link>
                 </div>
             </div>

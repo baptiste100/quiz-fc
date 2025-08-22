@@ -32,7 +32,7 @@ export default function QuizCard( props: { quiz: Quiz, isConnectedUser: boolean 
                 <div className="flex justify-center">
                     <Link
                         href={props.isConnectedUser ? `/quizs/${quiz.id}` : `/auth/signin`}
-                        className="bg-[color:var(--second-color)] hover:bg-[color:var(--second-color)] text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 hover:shadow-md"
+                        className="bg-[color:var(--second-color)] hover:bg-[color:var(--second-color)] text-white font-semibold py-1 px-3 rounded-lg transition-all duration-200 transform hover:scale-105 hover:shadow-md"
                     >
                         Commencer
                     </Link>
