@@ -29,7 +29,6 @@ export default function SignUp() {
     const [imagePreview, setImagePreview] = useState<string | null>(null);
     const router = useRouter();
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState("aaaa");
 
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
@@ -187,10 +186,10 @@ export default function SignUp() {
                                     callbackURL: "/"
                                 },
                                 {
-                                    onRequest: (ctx) => {
+                                    onRequest: () => {
                                         setLoading(true);
                                     },
-                                    onResponse: (ctx) => {
+                                    onResponse: () => {
                                         setLoading(false);
                                     },
                                 },
