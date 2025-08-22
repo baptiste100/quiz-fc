@@ -144,9 +144,6 @@ export default function SignUp() {
                         className="w-full cursor-pointer bg-[color:var(--button-bg)] hover:bg-[color:var(--button-bg-hover)]  text-[color:var(--light-text-color)]"
                         disabled={loading}
                         onClick={async () => {
-                            console.log(email);
-                            console.log(password);
-                            console.log(username);
                             await signUp.email({
                                 email,
                                 password,

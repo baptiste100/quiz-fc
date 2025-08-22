@@ -13,7 +13,6 @@ export default function QuestionCard({ questions, quizResultId } : {questions: Q
     const pathname = usePathname();
 
     async function createQuestionResult(isCorrect: boolean, givenAnswerId: number) {
-        console.log("givenAnswerId : " + givenAnswerId);
         return fetch("/api/question-result", {
             method: "POST",
             body: JSON.stringify({ questionId: questions[currentQuestionNb].id, resultId: quizResultId, isCorrect: isCorrect, givenAnswerId: givenAnswerId }),
