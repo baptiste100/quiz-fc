@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Quiz FC ⚽
 
-## Getting Started
+Une application web de quiz interactifs sur le football, permettant aux utilisateurs de tester leurs connaissances et de suivre leurs performances.
 
-First, run the development server:
+## 🚀 Lien vers la version déployée
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+[https://quiz-fc.vercel.app](https://quiz-fc.vercel.app)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Stack utilisée
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Frontend** : Next.js 15, React, TypeScript
+- **Styling** : Tailwind CSS
+- **Base de données** : PostgreSQL (Supabase)
+- **ORM** : Prisma
+- **Authentification** : Better Auth avec Google OAuth
+- **Déploiement** : Vercel
+- **Package Manager** : npm
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📋 Features actuelles
 
-## Learn More
+### 🔐 Authentification
+- Connexion/inscription avec Google
+- Gestion de session sécurisée
+- Pages de compte utilisateur
 
-To learn more about Next.js, take a look at the following resources:
+### 🎯 Système de Quiz
+- Affichage de la liste des quiz disponibles
+- Interface de quiz interactif avec questions à choix multiples
+- Système de scoring en temps réel
+- Sauvegarde automatique des résultats
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 📊 Suivi des Performances
+- Historique des résultats par utilisateur
+- Détails des réponses pour chaque quiz
+- Statistiques de performance
+- Page de résultats dédiée
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 👤 Gestion de Compte
+- Page d'informations personnelles
+- Historique complet des quiz réalisés
+- Interface de gestion du profil
 
-## Deploy on Vercel
+## 🔮 Features possibles
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Création de quiz** : Interface d'administration pour créer des quiz
+- **Catégories avancées** : Ligue 1, Champions League, Football international
+- **Système de badges** : Récompenses selon les performances
+- **Classements** : Leaderboards globaux et par catégorie
+- **Statistiques avancées** : Graphiques de progression, analyse des erreurs
+- **Mode hors ligne** : Sauvegarde locale des quiz
+- **Quiz collaboratifs** : Mode multijoueur en temps réel
+- **Notifications** : Alertes pour nouveaux quiz et défis
